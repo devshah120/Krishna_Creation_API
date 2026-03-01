@@ -30,4 +30,14 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// Get all workers
+router.get('/workers', async (req, res) => {
+    try {
+        const workers = await User.find({ role: 'Worker' }).select('-password');
+        res.json(workers);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 module.exports = router;
