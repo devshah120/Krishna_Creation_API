@@ -38,4 +38,14 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+// Delete order (Admin)
+router.delete('/:id', async (req, res) => {
+    try {
+        await Order.findByIdAndDelete(req.params.id);
+        res.json({ message: 'Order deleted successfully' });
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+});
+
 module.exports = router;

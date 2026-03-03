@@ -5,6 +5,7 @@ const cors = require('cors');
 
 const authRoutes = require('./routes/auth');
 const orderRoutes = require('./routes/orders');
+const inquiryRoutes = require('./routes/inquiries');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(express.json());
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/inquiries', inquiryRoutes);
 
 // Database Connection
 mongoose.connect(process.env.MONGO_URI)

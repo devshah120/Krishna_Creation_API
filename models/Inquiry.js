@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const orderSchema = new mongoose.Schema({
+const inquirySchema = new mongoose.Schema({
     orderSrNo: { type: Number, required: true },
     orderDate: { type: Date, required: true },
     partyName: { type: String, required: true },
@@ -9,18 +9,8 @@ const orderSchema = new mongoose.Schema({
     productQty: { type: Number, required: true },
     amount: { type: Number, required: true },
     dueDate: { type: Date, required: true },
-    outsource: { type: Boolean, default: false },
-    outsourceName: { type: String },
-    arrivalDate: { type: Date },
-    assignedWorkerId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    status: {
-        type: String,
-        enum: ['New', 'In Progress', 'Pending Approval', 'Complete'],
-        default: 'New'
-    },
-    proofImage: { type: String },
     color: { type: String },
     samplePhoto: { type: String }
 }, { timestamps: true });
 
-module.exports = mongoose.model('Order', orderSchema);
+module.exports = mongoose.model('Inquiry', inquirySchema);
